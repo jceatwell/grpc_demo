@@ -18,6 +18,12 @@ def add_item(todo_details):
     print("Received from Server ...")
     print(response)
 
+def get_response():
+    with grpc.insecure_channel('localhost:40000') as channel:
+        stub = todo_pb2_grpc.TodoStub(channel)
+        responses = stub.readTodos(todo_pb2.voidNoParam())
+        print(responses)
+        
 def stream_response():
     with grpc.insecure_channel('localhost:40000') as channel:
         stub = todo_pb2_grpc.TodoStub(channel)
@@ -31,5 +37,7 @@ if __name__ == '__main__':
     
     if todo_cmd == "add":
         add_item(sys.argv[2])
+    if todo_cmd == "get":
+        get_response()
     else:
         stream_response()

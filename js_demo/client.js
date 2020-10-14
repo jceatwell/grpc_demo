@@ -22,16 +22,13 @@ function createToDo(details) {
 
 function getToDo() {
     stub.readTodos(null, (err, response) => {
-        console.log("------- Full Response ------");
         console.log("Normal Send/Reveive: Items from Server: ");
         if (response.items)
             response.items.forEach((a,i) => console.log(`${i} -> ${a.details} is ${a.done}`));
-        console.log("------------------------------");
     })
 }
 
 function streanResponse() {
-    console.log("------- Stream Response ------");
     const call = stub.readTodosStream();
     call.on("data", item => {
         console.log("received item from server " + JSON.stringify(item , null, 2))
