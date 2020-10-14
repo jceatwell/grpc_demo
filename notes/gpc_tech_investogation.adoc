@@ -1,0 +1,89 @@
+== Code Examples
+
+https://github.com/Sean-Bradley/Seans-gRPC
+https://github.com/dnys1/grpc_demo
+
+== Articles
+
+```
+https://djangogrpcframework.readthedocs.io/_/downloads/en/stable/pdf/
+https://github.com/fengsp/django-grpc-framework/tree/master/examples/tutorial
+https://grpc.io/docs/languages/python/quickstart/
+https://pypi.org/project/django-grpc-framework/
+https://pypi.org/project/django-grpc/
+```
+
+https://www.velotio.com/engineering-blog/grpc-implementation-using-python
+
+== Using with FronEnd
+
+https://medium.com/swlh/building-a-realtime-dashboard-with-reactjs-go-grpc-and-envoy-7be155dfabfb
+https://www.freecodecamp.org/news/how-to-use-grpc-web-with-react-1c93feb691b5/
+
+== Notes
+
+- Open source RPC system
+- Created by Goolge in 2015
+- Uses http/2 as an underlying mechanism
+- Uses protocol buffer as the message format
+
+
+== Client Server Architectures
+- XML-RPC (1998)
+- SOAP (Simple Object Access Protocol) -> Bloat + Schema problems (2000)
+- Roy Fielding (2000) created REST (REpresentational State Transfer), only really became popular by 2004 (Flicr)
+- Bidirectional problem soved by: SSE and WebSockets
+- Raw TCP (most databases e.g. Redis)
+
+== Client libraries 
+
+- Solves the problem of a language agnostic client library (PROVE!)
+- Google maintained Client Library, language agnostic)
+- Protocol uses HTTP/2 (New features, security, etc), note that http/2 implementation is hidden
+- Message Format: Protocol buffers as format
+
+== Modes of gRPC
+(One library to rule them all!)
+
+- Unary RPC
+    - Standard Request / Response
+    - Make call / wait for response
+
+- Server streaming
+    - One request to the server
+    - client is waiting for alot of data to be returned
+    - Similar to Websockets
+
+- Client streaming
+    - Client is constantly sending information
+    - e.g. For uploading large files
+
+- BiDirectional streaming
+    - Chatting
+    - Gaming
+
+== Advantages (Why use it?)
+
+ - HTTP/2 based transport
+    - Secure by default
+    - One major benefit is multiple bidirectional streams that can be created and sent over TCP connections parallelly,
+ - Auth, tracing, load balancing and health checking
+    - gRPC provides all these features, making it a secure and reliable option to choose
+ - Language independent communication
+    - Two services may be written in different languages, say Python and Golang. gRPC ensures smooth communication between them
+ - Can use to create an aggregator easily in the stack
+ 
+== Disadvantages
+
+ - Protocol Buffers 
+    - gRPC uses protocol buffers for defining the type of data (also called Interface Definition Language (IDL)) to be sent between the gRPC client and the gRPC server. 
+    - It also uses it as the message interchange format. 
+
+
+
+== Why does this technology exist ?
+
+== Pros and Cons
+
+---
+npm install grpc @grpc/proto-loader --save-dev
