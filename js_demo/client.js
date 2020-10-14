@@ -1,31 +1,35 @@
 const grpc = require("grpc");
 const protoLoader = require("@grpc/proto-loader")
-const packageDef = protoLoader.loadSync("todo.proto", {});
-const grpcObject = grpc.loadPackageDefinition(packageDef);
-const todoPackage = grpcObject.todoPackage;
+const packageDef = protoLoader.loadSync("proto/todo.proto", {});
+const protoDescriptor = grpc.loadPackageDefinition(packageDef);
+const todoPackage = protoDescriptor.todoPackage;
 
-const text = process.argv[2];
+const details = process.argv[2];
 
-const client = new todoPackage.Todo("localhost:40000", 
-grpc.credentials.createInsecure())
+// Create Insecure Connection (NOte that this can use OAuth / SSL)
+const stub = new todoPackage.Todo("localhost:40000", grpc.credentials.createInsecure())
 
-client.createTodo({
+// Stub - Standard client (POST)
+stub.createTodo({
     "id": -1,
-    "text": text
+    "details": details,
+    "done": false
 }, (err, response) => {
-    console.log("Received from server -> " + JSON.stringify(response, null, 2));
+    console.log("Received from server (NEW) -> " + JSON.stringify(response, null, 2));
 })
 
-client.readTodos(null, (err, response) => {
+// Stub (GET)
+stub.readTodos(null, (err, response) => {
     console.log("------- Full Response ------");
     console.log("Normal Send/Reveive: Items from Server: ");
     if (response.items)
-        response.items.forEach((a,i) => console.log(`${i} -> ${a.text}`));
+        response.items.forEach((a,i) => console.log(`${i} -> ${a.details} is ${a.done}`));
     console.log("------------------------------");
 })
 
+// Stub (Streaming from Server)
 console.log("------- Stream Response ------");
-const call = client.readTodosStream();
+const call = stub.readTodosStream();
 call.on("data", item => {
     console.log("received item from server " + JSON.stringify(item , null, 2))
 })

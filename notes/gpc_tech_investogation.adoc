@@ -1,7 +1,6 @@
 == Code Examples
 
 https://github.com/Sean-Bradley/Seans-gRPC
-https://github.com/dnys1/grpc_demo
 
 == Articles
 
@@ -11,6 +10,7 @@ https://github.com/fengsp/django-grpc-framework/tree/master/examples/tutorial
 https://grpc.io/docs/languages/python/quickstart/
 https://pypi.org/project/django-grpc-framework/
 https://pypi.org/project/django-grpc/
+https://blog.envoyproxy.io/envoy-and-grpc-web-a-fresh-new-alternative-to-rest-6504ce7eb880
 ```
 
 https://www.velotio.com/engineering-blog/grpc-implementation-using-python
@@ -66,7 +66,7 @@ https://www.freecodecamp.org/news/how-to-use-grpc-web-with-react-1c93feb691b5/
 
  - HTTP/2 based transport
     - Secure by default
-    - One major benefit is multiple bidirectional streams that can be created and sent over TCP connections parallelly,
+    - One major benefit is multiple bidirectional streams that can be created and sent over TCP connections parallel,
  - Auth, tracing, load balancing and health checking
     - gRPC provides all these features, making it a secure and reliable option to choose
  - Language independent communication
@@ -80,10 +80,18 @@ https://www.freecodecamp.org/news/how-to-use-grpc-web-with-react-1c93feb691b5/
     - It also uses it as the message interchange format. 
 
 
-
 == Why does this technology exist ?
 
 == Pros and Cons
 
 ---
 npm install grpc @grpc/proto-loader --save-dev
+
+
+- Introduction
+    - What is it
+    - What problems does it solve ?
+    
+- Types of communication
+- Coding Example
+- Pros and cons
