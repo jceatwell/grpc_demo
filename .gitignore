@@ -2,3 +2,4 @@ node_modules/
 .vscode/
 .DS_Store/
 js_demo/.DS_Store/
+py_demo/venv/

@@ -7,7 +7,7 @@ import todo_pb2
 import todo_pb2_grpc
 
 
-def send_item(todo_details):
+def add_item(todo_details):
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
     # used in circumstances in which the with statement does not fit the needs
     # of the code.
@@ -27,7 +27,9 @@ def stream_response():
 
 if __name__ == '__main__':
     logging.basicConfig()
-    todo_details = sys.argv[1]
-    send_item(todo_details)
-
-    stream_response()
+    todo_cmd = sys.argv[1]
+    
+    if todo_cmd == "add":
+        add_item(sys.argv[2])
+    else:
+        stream_response()
